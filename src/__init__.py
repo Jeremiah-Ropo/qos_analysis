@@ -4,8 +4,8 @@ from src.config import firebase_config
 
 app = Flask(__name__)
 
-# Initialize Firebase Admin
-cred = credentials.Certificate(firebase_config)
-initialize_app(cred)
+# # Initialize Firebase Admin
+# cred = credentials.Certificate(firebase_config)
+# initialize_app(cred)
 
 from .routes import *  # Import all routes into the app
