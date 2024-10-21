@@ -34,6 +34,11 @@ with open(model_path, 'rb') as model_file:
 #     data_list = all_data.val() if all_data.val() else []
 #     return jsonify({"status": "success", "data": data_list}), 200
 
+# Check the health
+def health():
+    return jsonify({'status': 'success', 'message': 'server is running'}), 200
+
+
 # Predict endpoint
 def predict():
     try:
