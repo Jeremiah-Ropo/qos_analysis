@@ -1,6 +1,6 @@
 from flask import Flask
-from firebase_admin import credentials, initialize_app
-from src.config import firebase_config
+# from firebase_admin import credentials, initialize_app
+# from src.config import firebase_config
 
 app = Flask(__name__)
 
