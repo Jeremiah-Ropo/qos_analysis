@@ -2,37 +2,37 @@ import os
 import pickle
 from flask import request, jsonify
 import pyrebase
-from src.config import firebase_config
+# from src.config import firebase_config
 import pandas as pd
 from src.pipelines import feature_engineering, process_testing_dataset, save_predicted_values
 from src.notification import get_random_notification
 
 
-# Initialize Firebase
-firebase = pyrebase.initialize_app(firebase_config)
-db = firebase.database()
+# # Initialize Firebase
+# firebase = pyrebase.initialize_app(firebase_config)
+# db = firebase.database()
 
 # Load the trained model
 model_path = os.path.join(os.path.dirname(__file__), 'final_model.pkl')
 with open(model_path, 'rb') as model_file:
     model = pickle.load(model_file)
 
-# Add data to Firebase
-def add_data():
-    data = request.json
-    if not data:
-        return jsonify({'error': 'No data provided'}), 400
+# # Add data to Firebase
+# def add_data():
+#     data = request.json
+#     if not data:
+#         return jsonify({'error': 'No data provided'}), 400
     
-    # Add data to Firebase
-    db.child("users").push(data)
-    return jsonify({"status": "success", "data": data}), 201
+#     # Add data to Firebase
+#     db.child("users").push(data)
+#     return jsonify({"status": "success", "data": data}), 201
 
-# Retrieve data from Firebase
-def get_data():
-    all_data = db.child("users").get()
-    print(all_data)
-    data_list = all_data.val() if all_data.val() else []
-    return jsonify({"status": "success", "data": data_list}), 200
+# # Retrieve data from Firebase
+# def get_data():
+#     all_data = db.child("users").get()
+#     print(all_data)
+#     data_list = all_data.val() if all_data.val() else []
+#     return jsonify({"status": "success", "data": data_list}), 200
 
 # Predict endpoint
 def predict():
