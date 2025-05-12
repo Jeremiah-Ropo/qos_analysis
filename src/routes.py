@@ -16,6 +16,7 @@ from src.notification import get_random_notification
 model_path = os.path.join(os.path.dirname(__file__), 'final_model.pkl')
 with open(model_path, 'rb') as model_file:
     model = pickle.load(model_file)
+    print(model.feature_names_in_)
 
 # # Add data to Firebase
 # def add_data():
@@ -97,7 +98,8 @@ def predict():
         return jsonify({
             'status': 'success',
             'prediction': int(prediction),
-            'notification': notification_message
+            'notification': notification_message,
+            "input_data": input_data.to_dict(orient='records')
         }), 200
 
     except Exception as e:

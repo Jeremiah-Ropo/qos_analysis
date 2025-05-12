@@ -118,15 +118,16 @@ def drop_columns(df):
 def process_testing_dataset(test_df):
 
     # List of columns (including missing ones in the test data)
-    columns = ['Download', 'Upload', 'Latency', 'DNS Lookup', 'RSS', 'Device Model',
-           'Device Brand Name', 'Manufacture', 'OS Version', 'Battery Charge Level',
-           'Network Type', 'Longitude', 'Latitude', 'OS Core_armeabi-v7a',
-           'Operator_Name_9MOBILE', 'Operator_Name_AIRTEL', 'Operator_Name_GLO',
-           'Operator_Name_MTN', 'State_Delta State', 'State_Ekiti State',
-           'State_Federal Capital Territory', 'State_Kogi State', 'State_Lagos State',
-           'State_Ogun State', 'State_Ondo State', 'State_Osun State',
-           'State_Oyo State', 'time_of_day_Afternoon', 'time_of_day_Evening',
-           'time_of_day_Morning']
+    columns = ['Download (Mbps)', 'Upload (Mbps)', 'Latency (ms)', 'DNS Lookup (ms)',
+       'RSS (dBm)', 'Device Model', 'Device Brand Name', 'Manufacture',
+       'OS Version', 'Battery Charge Level (%)', 'Network Type', 'Longitude',
+       'Latitude', 'OS Core_armeabi-v7a', 'Operator_Name_9MOBILE',
+       'Operator_Name_AIRTEL', 'Operator_Name_GLO', 'Operator_Name_MTN',
+       'City_Delta State', 'City_Ekiti State',
+       'City_Federal Capital Territory', 'City_Kogi State', 'City_Lagos State',
+       'City_Ogun State', 'City_Ondo State', 'City_Osun State',
+       'City_Oyo State', 'time_of_day_Afternoon', 'time_of_day_Evening',
+       'time_of_day_Morning']
 
     # Create a copy of the template for the same number of rows as test_df
     df_filled = pd.DataFrame(0, index=test_df.index, columns=columns)
